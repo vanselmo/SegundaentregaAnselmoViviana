@@ -1,10 +1,6 @@
 # Descripción del proyecto
 
-Este proyecto es una aplicación de gestión de productos y carritos desarrollada en Node.js y Express. Permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) tanto en productos como en carritos.
-
-## Inicialización del proyecto
-
-El proyecto se inicializa con 10 productos precargados. Estos productos se utilizan para realizar pruebas con los diferentes endpoints proporcionados en la consigna.
+Este proyecto es una aplicación web desarrollada con Node.js, Express y Socket.IO para la administración de productos y carritos de compras en tiempo real. Además, la aplicación ofrece una interfaz sencilla y clara utilizando Handlebars y Bootstrap.
 
 ## Instalación
 
@@ -16,6 +12,7 @@ El proyecto se inicializa con 10 productos precargados. Estos productos se utili
    ```
 
 ## Uso
+
 Para ejecutar la aplicación localmente, simplemente utiliza el siguiente comando:
 
    ```bash
@@ -25,14 +22,16 @@ Esto iniciará el servidor en el puerto 8080. Puedes acceder a la API utilizando
 
 ### Endpoints disponibles
 
-- **GET /api/products**: Obtiene todos los productos.
-- **GET /api/products/:pid**: Obtiene un producto específico por su ID.
-- **POST /api/products**: Agrega un nuevo producto.
-- **PUT /api/products/:pid**: Actualiza un producto existente.
-- **DELETE /api/products/:pid**: Elimina un producto por su ID.
+#### Gestión de productos
+- **GET /api/products** : Listar todos los productos.
+- **GET /api/products/:pid** : Obtener un producto por su ID.
+- **POST /api/products** : Crear un nuevo producto.
+- **PUT /api/products/:pid** : Actualizar un producto existente.
+- **DELETE /api/products/:pid** : Eliminar un producto.
 
-- **POST /api/carts**: Crea un nuevo carrito.
-- **GET /api/carts/:cid**: Obtiene un carrito específico por su ID.
-- **POST /api/carts/:cid/product/:pid**: Agrega un producto a un carrito existente por sus IDs.
+#### Gestión de carritos
+- **POST /api/carts** : Crear un nuevo carrito.
+- **GET /api/carts/:cid** : Obtener un carrito por su ID.
+- **POST /api/carts/:cid/product/:pid** : Añadir un producto a un carrito.
 
 Recuerda reemplazar `:pid` y `:cid` con los IDs correspondientes.

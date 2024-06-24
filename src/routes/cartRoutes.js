@@ -1,6 +1,3 @@
-/* const express = require('express');
-const cartsRouter = express.Router(); */
-
 import { Router } from "express";
 
 const cartsRouter = Router();

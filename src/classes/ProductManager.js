@@ -35,7 +35,6 @@ class ProductManager {
         }
 
         const newProduct = {
-            id: ++ProductManager.lastId,
             title,
             description,
             price,
@@ -45,6 +44,13 @@ class ProductManager {
             category,
             status,
         };
+
+        if (this.products.length > 0) {
+            ProductManager.lastId = this.products.reduce((maxId, product) => Math.max(maxId, product.id), 0);
+        }
+
+        newProduct.id = ++ProductManager.lastId;
+
 
         this.products.push(newProduct);
         await this.saveFile(this.products);

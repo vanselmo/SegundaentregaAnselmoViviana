@@ -6,29 +6,42 @@ socket.on("products", (data) => {
 
 const renderProducts = (data) => {
     const productsContainer = document.getElementById("productsContainer");
-    productsContainer.innerHTML ="";
+    productsContainer.innerHTML = "";
+
+    const row = document.createElement("div");
+    row.classList.add("row");
 
     data.forEach(item => {
         const card = document.createElement("div");
+        card.classList.add("col-sm-6", "col-md-4", "col-lg-3", "mb-3");
+        card.innerHTML = `
+            <div class="card rounded-5">
+                <div class="card-body shadow text-center rounded-5">
+                    <p><strong>${item.title}</strong></p>
+                    <p>ID: ${item.id}</p>
+                    <p>Descripción: ${item.description}</p>
+                    <p>Precio: ${item.price}</p>
+                    <p>Código: ${item.code}</p>
+                    <p>Stock: ${item.stock}</p>
+                    <p>Categoría: ${item.category}</p>
+                    <p>Estado: ${item.status ? 'Activo' : 'Inactivo'}</p>
+                    <p>Imágenes: ${item.thumbnails ? item.thumbnails : 'Sin imágenes'}</p>
+                    <button class="btnDelete rounded-pill" data-id="${item.id}">Eliminar</button>
+                </div>
+            </div>
+        `;
+        
+        row.appendChild(card);
+    });
 
-        card.innerHTML = `<p>${item.id}</p>
-        <p>${item.title}</p>
-        <p>${item.description}</p>
-        <p>${item.price}</p>
-        <p>${item.category}</p>
-        <p>${item.stock}</p>
-        <p>${item.code}</p>
-        <p>${item.thumbnail}</p>
-        <p>${item.status}</p>
-        <button> Eliminar </button>`
+    productsContainer.appendChild(row);
 
-        productsContainer.appendChild(card);
-
-        card.querySelector("button").addEventListener("click", () => {
-            deleteProducts(item.id);
-        })
-    })
-
+    productsContainer.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const productId = e.target.getAttribute("data-id");
+            deleteProducts(productId);
+        });
+    });
 }
 
 const deleteProducts = (id) => {

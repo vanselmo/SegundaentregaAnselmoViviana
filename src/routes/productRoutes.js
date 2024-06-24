@@ -1,11 +1,6 @@
-//import express from 'express';
-//import productsRouter from './productRoutes';
-
 import { Router } from "express";
 
 const productsRouter = Router();
-//const express = require('express');
-//const productsRouter = express.Router();
 
 const productRoutes = (productManager) => {
     productsRouter.get("/", async (req, res) => {
